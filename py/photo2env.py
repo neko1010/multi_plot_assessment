@@ -33,7 +33,7 @@ def photo2env(rootdir, bufferDist):
 
 
 def main():
-    rootdir = "C:\\Users\\nkolarik\\Desktop\\Kazava_Local\\temp"
+    rootdir = "C:\\Users\\nkolarik\\Desktop\\Mavic"
     bufferDist = "31.8 meters"
     photo2env(rootdir, bufferDist)
 if __name__ == '__main__':

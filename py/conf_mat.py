@@ -46,7 +46,7 @@ def get_cover_lyrs(polys, band):
                     "tree_lyr", where_clause = "GRIDCODE > 30000")
                 covers.append(tree_est)
                 shrub_est = arcpy.MakeFeatureLayer_management(os.path.join(polys, poly),
-                     "shrub_lyr", where_clause = "GRIDCODE < 30000 AND GRIDCODE > 10" )
+                     "shrub_lyr", where_clause = "GRIDCODE < 30000 AND GRIDCODE > 10000" )
                 covers.append(shrub_est)
 
             ## exception for height threshold maps
@@ -150,10 +150,15 @@ def main():
     ## could refactor here to run this from command line?
 
     arcpy.env.overwriteOutput = True
-    rdm_pt_dir = "C:\\Users\\nkolarik\\Desktop\\thesis\\data\\random_pts"
+    #rdm_pt_dir = "C:\\Users\\nkolarik\\Desktop\\thesis\\data\\random_pts"
     #alg_dir = "C:\\Users\\nkolarik\\Desktop\\thesis\\output\\thresh"
     #alg_dir = "C:\\Users\\nkolarik\\Desktop\\thesis\\output\\H2O"
-    alg_dir = "C:\\Users\\nkolarik\\Desktop\\thesis\\output\\ITC"
+    #alg_dir = "C:\\Users\\nkolarik\\Desktop\\thesis\\output\\ITC"
+    
+    rdm_pt_dir = "E:\\thesis\\data\\random_pts"
+    #alg_dir = "E:\\thesis\\output\\thresh"
+    #alg_dir = "E:\\thesis\\output\\H2O"
+    alg_dir = "E:\\thesis\\output\\ITC"
 
 
     mat = np.asarray([[0, 0, 0],
@@ -196,7 +201,8 @@ def main():
                 ## saving to csv
                 #np.savetxt(os.path.join(csv_dest, "{}_{}.csv".format(band, cover)), mat, delimiter = ',')
                 alg = alg_dir.split("\\")[-1]
-                np.savetxt(os.path.join(csv_dest, "{}_{}_{}_{}.csv".format(alg, refID, band, cover)), mat, delimiter = ',')
+                #np.savetxt(os.path.join(csv_dest, "{}_{}_{}_{}.csv".format(alg, refID, band, cover)), mat, delimiter = ',')
+                np.savetxt(os.path.join(csv_dest, "{}_{}_{}_{}_update.csv".format(alg, refID, band, cover)), mat, delimiter = ',')
 
 if __name__ == '__main__':
     main()
